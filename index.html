@@ -37,12 +37,14 @@
 			<div class="form-container">
 				<p class="title">Заполните данные</p>
 				<div class="inputs-wrapper">
-					<input type="text">
-					<input type="text">
-					<input type="text">
+					<input type="text" placeholder="Ваше имя">
+					<input type="text" placeholder="Номер телефона">
+					<input type="text" placeholder="Имя Вашего питомца">
 					<label for="">Загрузите фотографию:</label>
 
-                	<img id="blah" />
+                	<div class="img-container">
+						<img id="blah" src="src/haski.jpg" />
+					</div>
                 	<label class="input-file">
 						<input type="file" name="file" id = "file" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">		
 						<span id = "photo">Выберите файл</span>
