@@ -1,0 +1,28 @@
+@font-face { 
+    font-family: "MullerLight";
+    src: url("fonts/MullerLight.eot");
+    src: url("fonts/MullerLight.eot?#iefix")format("embedded-opentype"),
+    url("fonts/MullerLight.woff") format("woff"),
+    url("fonts/MullerLight.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 300;
+}
+:root{
+    
+}
+
+body, html{
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  background-image: url('../src/1920x1080.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+
+  

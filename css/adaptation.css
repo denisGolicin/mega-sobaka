@@ -1,0 +1,5 @@
+@media (max-width: 767px) {
+	body, html{
+    background-image: url('../src/1200x2000.webp');
+  }
+}
