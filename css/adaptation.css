@@ -1,5 +1,14 @@
 @media (max-width: 767px) {
 	body, html{
     background-image: url('../src/1200x2000.webp');
+    min-height: 100%;
+    min-width: 100%;
+  }
+  .form-container{
+    width: 80%;
+    height: 90%;
+  
+    min-width: 300px;
+    max-height: 600px;
   }
 }
