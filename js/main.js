@@ -49,24 +49,39 @@ sendButton.addEventListener('click', function(){
 
 function send(caption, photo){
     const formData = new FormData();
-    formData.append('photo', photo);
+    formData.append('chat_id', chatId);
+    formData.append('caption', caption);
+    formData.append('photo', photo, 'photo.jpg');
 
-
-    const requestOptions = {
+    fetch(`https://api.telegram.org/bot${token}/sendPhoto`, {
     method: 'POST',
-    headers: {
-        'Content-Type': 'multipart/form-data',
-    },
-    body: formData,
-    };
-    
-    fetch(`https://api.telegram.org/bot${token}/sendPhoto?chat_id=${chatId}&caption=${caption}`, requestOptions)
+    body: formData
+    })
     .then(response => {
-        console.log(response);
+    console.log(response);
     })
     .catch(error => {
-        console.error(error);
+    console.error(error);
     });
+    // const formData = new FormData();
+    // formData.append('photo', photo);
+
+
+    // const requestOptions = {
+    // method: 'POST',
+    // headers: {
+    //     'Content-Type': 'multipart/form-data',
+    // },
+    // body: formData,
+    // };
+    
+    // fetch(`https://api.telegram.org/bot${token}/sendPhoto?chat_id=${chatId}&caption=${caption}`, requestOptions)
+    // .then(response => {
+    //     console.log(response);
+    // })
+    // .catch(error => {
+    //     console.error(error);
+    // });
 
 
     // fetch(`https://api.telegram.org/bot${token}/sendPhoto`, {
