@@ -15,7 +15,6 @@ const token = '5256737385:AAHlQd83rrsgc5vwjL0k-6mDYfsz7J_ZD7I';
 
 if (document.cookie.indexOf('formSubmitted=1') !== -1) {
     this.innerHTML = "<b>Вы учавствуете!</b>";
-    return;
 }
 
 sendButton.addEventListener('click', function(){
