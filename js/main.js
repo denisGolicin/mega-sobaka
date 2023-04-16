@@ -7,6 +7,7 @@ const dogName = document.querySelector('#dog');
 const info = document.querySelector('#info');
 const sendButton = document.querySelector('#send');
 const photoButton = document.querySelector('#photo');
+let waitResponse = false;
 
 const chatId = '-1001797140171';
 const token = '5256737385:AAHlQd83rrsgc5vwjL0k-6mDYfsz7J_ZD7I';
@@ -51,7 +52,7 @@ sendButton.addEventListener('click', function(){
     waitResponse = true;
     
     const now = new Date();
-    const expirationDate = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000); // текущая дата + 30 дней
+    const expirationDate = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
 
     document.cookie = `formSubmitted=1; expires=${expirationDate.toUTCString()}; path=/`;
 
