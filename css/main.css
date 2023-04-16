@@ -28,15 +28,14 @@ body, html{
   color: #fff;
 
 }
-.mobile{
-  display: none !important;
-}
+
 .button-mobile{
   padding: 15px;
   background-color: rgba(255, 255, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
+  display: none;
 }
 .button-mobile>button{
   width: 100%;

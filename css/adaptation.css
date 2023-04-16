@@ -40,6 +40,12 @@
   .title, .text{
     padding: 10px;
   }
+  .mobile{
+    display: none !important;
+  }
+  .button-mobile{
+    display: flex !important;
+  }
   /* .wrapper-description{
     margin-top: 30%;
   } */
