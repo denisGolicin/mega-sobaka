@@ -16,6 +16,10 @@ sendButton.addEventListener('click', function(){
         alert('Форма уже отправлена');
         return;
     }
+    if(waitResponse){
+        return;
+    }
+
     if(nameUser.value < 10){
         invalidInput(nameUser);
         return;
@@ -41,10 +45,15 @@ sendButton.addEventListener('click', function(){
         return;
     }
 
-    send(`<b>Конкурент:</b> ${nameUser.value}\nКличка собаки: ${dogName.value}\nНомер телефона: ${phone.value}\nДополнительная информация: ${info.value}`, 
+    send(`Конкурент: ${nameUser.value}\nКличка собаки: ${dogName.value}\nНомер телефона: ${phone.value}\nДополнительная информация: ${info.value}`, 
     file);
-      
-    document.cookie = 'formSubmitted=1';
+
+    waitResponse = true;
+    
+    const now = new Date();
+    const expirationDate = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000); // текущая дата + 30 дней
+
+    document.cookie = `formSubmitted=1; expires=${expirationDate.toUTCString()}; path=/`;
 
 })
 
@@ -59,10 +68,11 @@ function send(caption, photo){
     body: formData
     })
     .then(response => {
-    console.log(response);
+        console.log(response);
     })
     .catch(error => {
-    console.error(error);
+        console.error(error);
+        waitResponse = false;
     });
     // const formData = new FormData();
     // formData.append('photo', photo);
