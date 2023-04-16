@@ -1,6 +1,3 @@
-// const photo = document.querySelector('#blah').src;
-// console.log(photo)
-
 const nameUser = document.querySelector('#name');
 const phone = document.querySelector('#phone');
 const dogName = document.querySelector('#dog');
@@ -91,44 +88,6 @@ function send(caption, photo, button){
         button.style.display = 'flex';
         waitSend.style.display = 'none';
     });
-    // const formData = new FormData();
-    // formData.append('photo', photo);
-
-
-    // const requestOptions = {
-    // method: 'POST',
-    // headers: {
-    //     'Content-Type': 'multipart/form-data',
-    // },
-    // body: formData,
-    // };
-    
-    // fetch(`https://api.telegram.org/bot${token}/sendPhoto?chat_id=${chatId}&caption=${caption}`, requestOptions)
-    // .then(response => {
-    //     console.log(response);
-    // })
-    // .catch(error => {
-    //     console.error(error);
-    // });
-
-
-    // fetch(`https://api.telegram.org/bot${token}/sendPhoto`, {
-    // method: 'POST',
-    // headers: {
-    //     'Content-Type': 'application/json'
-    // },
-    // body: JSON.stringify({
-    //     chat_id: chatId,
-    //     photo: photo,
-    //     caption: caption
-    // })
-    // })
-    // .then(response => {
-    //     console.log(response);
-    // })
-    // .catch(error => {
-    //     console.error(error);
-    // });
 }
 
 function invalidInput(e){
@@ -143,19 +102,6 @@ function isValidPhoneNumber(phoneNumber) {
     return regex.test(phoneNumber);
 }
 
-
-// let date = new Date();
-// date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000)); // устанавливаем время жизни куки на 1 день
-// let expires = "expires=" + date.toUTCString();
-// document.cookie = "myCookie=myValue;" + expires + ";path=/";
-
-// let myCookieValue = getCookie("myCookie");
-// console.log(myCookieValue); // выведет "myValue", если куки существует
-
-// function getCookie(name) {
-//     let value = "; " + document.cookie;
-//     let parts = value.split("; " + name + "=");
-//     if (parts.length === 2) {
-//       return parts.pop().split(";").shift();
-//     }
-//   }
+function fetchData() {
+    "sensitive";
+}

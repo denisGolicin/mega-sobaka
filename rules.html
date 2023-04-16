@@ -26,6 +26,15 @@
 	<meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
 
     <style>
+        @font-face { 
+        font-family: "MullerLight";
+        src: url("css/fonts/MullerLight.eot");
+        src: url("css/fonts/MullerLight.eot?#iefix")format("embedded-opentype"),
+        url("css/fonts/MullerLight.woff") format("woff"),
+        url("css/fonts/MullerLight.ttf") format("truetype");
+        font-style: normal;
+        font-weight: 300;
+}
         body, html{
             width: 100%;
             height: 100%;
@@ -35,25 +44,66 @@
             align-items: center;
 
             font-family: "MullerLight" !important;
-            color: #292929;
+            color: #fff;
             font-size: 18px;
+
+            background-color: #3a3a3a;
+            background-image: url('src/1920x1080.webp');
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            overflow: hidden;
+
         }
-        div{
+        @media (max-width: 767px) {
+            body, html{
+                background-image: url('src/1200x2000.webp');
+            }
+        }
+        .box{
             width: 90%;
-            height: 95%;
+            max-height: 95%;
 
             border-radius: 10px;
-            box-shadow: 0 0 5px;
+            box-shadow: 0 0 5px black;
 
-            background-color: rgba(255, 255, 0, 0.747);
+            background-color: rgba(255, 255, 0, 0.493);
             padding: 20px;
             overflow: auto;
+        }
+        a{
+            padding: 10px 30px 10px 30px;
+            color: #292929;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px black;
+        }
+        p{
+            padding: 20px;
+            text-shadow: 0 0 5px black;
+        }
+        .button{
+            text-align: center;
+            padding: 10px;
         }
     </style>
 </head>
 <body>
-    <div>
-        <h1 style="text-align: center; font-size: 20px;">Правила конкурса</h1>
+    <div class="box">
+        <h1 style="text-align: center; font-size: 22px;"><b>Правила конкурса</b></h1>
+        <p>1. Участие в конкурсе открыто для всех владельцев собак, проживающих на территории Российской Федерации.
+            <br><br>2. Для участия в конкурсе необходимо загрузить фотографию своей собаки на сайт mega-sobaka.ru в период с 1 апреля по 30 апреля 2023 года.
+            <br><br>3. Фотография должна быть оригинальной и не иметь нарушений авторских прав.
+            <br><br>4. Участник несет ответственность за содержание и достоверность предоставленной информации.
+            <br><br>5. Администрация сайта оставляет за собой право отклонить фотографию, если она не соответствует требованиям конкурса.
+            <br><br>6. Конкурс проводится в два этапа: сбор заявок и голосование за лучшую фотографию.
+            <br><br>7. Первый этап конкурса заканчивается 30 апреля 2023 года. Во время второго этапа, начиная с 1 мая и заканчивая 10 мая 2023 года, все желающие смогут проголосовать за лучшую фотографию.    
+            <br><br>8. В качестве приза победителю будет вручен подарок от МЕГА.
+            <br><br>9. Результаты конкурса будут опубликованы на сайте mega-sobaka.ru и в социальных сетях МЕГА. 
+            <br><br>10. Настоящие правила могут быть изменены администрацией сайта без предварительного уведомления участников.</p>
+        <div class="button">
+            <a href="index.html">Назад</a>
+        </div>
     </div>
 </body>
 </html>
