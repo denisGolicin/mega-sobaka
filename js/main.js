@@ -30,6 +30,7 @@ sendButton.addEventListener('click', function(){
         return;
     }
     let file = document.getElementById("file").files[0];
+    console.log(document.getElementById("file").files[0]);
 
     if (!file) {
         invalidInput(photoButton);
@@ -47,23 +48,44 @@ sendButton.addEventListener('click', function(){
 })
 
 function send(caption, photo){
-    fetch(`https://api.telegram.org/bot${token}/sendPhoto`, {
+    const formData = new FormData();
+    formData.append('photo', photo);
+
+
+    const requestOptions = {
     method: 'POST',
     headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'multipart/form-data',
     },
-    body: JSON.stringify({
-        chat_id: chatId,
-        photo: photo,
-        caption: caption
-    })
-    })
+    body: formData,
+    };
+    
+    fetch(`https://api.telegram.org/bot${token}/sendPhoto?chat_id=${chatId}&caption=${caption}`, requestOptions)
     .then(response => {
         console.log(response);
     })
     .catch(error => {
         console.error(error);
     });
+
+
+    // fetch(`https://api.telegram.org/bot${token}/sendPhoto`, {
+    // method: 'POST',
+    // headers: {
+    //     'Content-Type': 'application/json'
+    // },
+    // body: JSON.stringify({
+    //     chat_id: chatId,
+    //     photo: photo,
+    //     caption: caption
+    // })
+    // })
+    // .then(response => {
+    //     console.log(response);
+    // })
+    // .catch(error => {
+    //     console.error(error);
+    // });
 }
 
 function invalidInput(e){
