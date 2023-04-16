@@ -43,7 +43,7 @@ sendButton.addEventListener('click', function(){
     Номер телефона: ${phone.value}\n
     Дополнительная информация: ${info.value}
     `, 
-    document.querySelector('#blah').src);
+    file);
 
 })
 
