@@ -12,6 +12,10 @@ const chatId = '-1001797140171';
 const token = '5256737385:AAHlQd83rrsgc5vwjL0k-6mDYfsz7J_ZD7I';
 
 sendButton.addEventListener('click', function(){
+    if (document.cookie.indexOf('formSubmitted=1') !== -1) {
+        alert('Форма уже отправлена');
+        return;
+    }
     if(nameUser.value < 10){
         invalidInput(nameUser);
         return;
@@ -39,6 +43,8 @@ sendButton.addEventListener('click', function(){
 
     send(`<b>Конкурент:</b> ${nameUser.value}\nКличка собаки: ${dogName.value}\nНомер телефона: ${phone.value}\nДополнительная информация: ${info.value}`, 
     file);
+      
+    document.cookie = 'formSubmitted=1';
 
 })
 
