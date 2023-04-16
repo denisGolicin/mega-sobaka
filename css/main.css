@@ -257,3 +257,12 @@ textarea{
 a{
   color: #fff !important;
 }
+.text-rules, .text-rules-mobile{
+  margin-top: 20px;
+  text-shadow: 0 0 5px black;
+  text-align: center;
+  padding: 10px;
+}
+.text-rules-mobile{
+  display: none;
+}

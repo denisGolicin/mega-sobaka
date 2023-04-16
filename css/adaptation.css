@@ -55,6 +55,11 @@
     width: 35px;
     height: 35px;
   }
+  .text-rules-mobile{
+    margin-top: 0;
+    display: block;
+    margin-bottom: 20px;
+  }
   /* .wrapper-description{
     margin-top: 30%;
   } */
