@@ -37,7 +37,7 @@ sendButton.addEventListener('click', function(){
         return;
     }
 
-    send(`Конкурент: ${nameUser.value}\nКличка собаки: ${dogName.value}\nНомер телефона: ${phone.value}\nДополнительная информация: ${info.value}`, 
+    send(`<b>Конкурент:</b> ${nameUser.value}\nКличка собаки: ${dogName.value}\nНомер телефона: ${phone.value}\nДополнительная информация: ${info.value}`, 
     file);
 
 })
