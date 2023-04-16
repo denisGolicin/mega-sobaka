@@ -45,6 +45,7 @@
   }
   .button-mobile{
     display: flex !important;
+    text-align: center;
     order: 2;
   }
   /* .wrapper-description{
