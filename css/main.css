@@ -26,6 +26,7 @@ body, html{
   font-family: "MullerLight" !important;
 
   color: #fff;
+  overflow: hidden;
 
 }
 
