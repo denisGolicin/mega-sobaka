@@ -6,6 +6,7 @@ let sendButton = [];
 sendButton = document.querySelectorAll('.send');
 const photoButton = document.querySelector('#photo');
 const waitSend = document.querySelector('.waitSend');
+const infoTest = document.querySelector('.info-test');
 let waitResponse = false;
 
 const chatId = '-1001797140171';
@@ -16,6 +17,8 @@ if (document.cookie.indexOf('formSubmitted=1') !== -1) {
     dogName.value = getCookie('formDogName');
     phone.value = getCookie('formPhone');
     info.value = getCookie('formInfo');
+
+    infoTest.innerHTML = "Ваши данные на конкурс";
 }
 
 for(let i = 0; i < sendButton.length; i++){
