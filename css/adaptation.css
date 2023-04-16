@@ -37,6 +37,9 @@
   .info-winner {
     margin-top: 10px;
   }
+  .description-container{
+    margin-top: 20px;
+  }
   .title, .text{
     padding: 10px;
   }
@@ -47,6 +50,10 @@
     display: flex !important;
     text-align: center;
     order: 2;
+  }
+  .waitSend{
+    width: 35px;
+    height: 35px;
   }
   /* .wrapper-description{
     margin-top: 30%;
