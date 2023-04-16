@@ -34,4 +34,13 @@
   .description-container{
     margin: 0;
   }
+  .info-winner {
+    margin-top: 10px;
+  }
+  .title, .text{
+    padding: 10px;
+  }
+  .wrapper-description{
+    margin-top: 30%;
+  }
 }
