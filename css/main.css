@@ -154,6 +154,20 @@ label{
 .description-container>.button>button:hover{
   transform: scale(1.05);
 }
+.waitSend{
+  width: 50px;
+  height: 50px;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  border-radius: 50%;
+  animation: wait 1s infinite;
+  display: none;
+}
+@keyframes wait {
+  100%{
+    transform: rotate(360deg);
+  }
+}
 .title, .text{
   width: 100%;
 

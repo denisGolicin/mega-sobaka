@@ -7,6 +7,7 @@ const dogName = document.querySelector('#dog');
 const info = document.querySelector('#info');
 const sendButton = document.querySelector('#send');
 const photoButton = document.querySelector('#photo');
+const waitSend = document.querySelector('.waitSend');
 let waitResponse = false;
 
 const chatId = '-1001797140171';
@@ -14,7 +15,7 @@ const token = '5256737385:AAHlQd83rrsgc5vwjL0k-6mDYfsz7J_ZD7I';
 
 sendButton.addEventListener('click', function(){
     if (document.cookie.indexOf('formSubmitted=1') !== -1) {
-        alert('Форма уже отправлена');
+        this.innerHTML = "<b>Вы учавствуете!</b>";
         return;
     }
     if(waitResponse){
@@ -50,6 +51,8 @@ sendButton.addEventListener('click', function(){
     file);
 
     waitResponse = true;
+    this.style.display = 'none';
+    waitSend.style.display = 'flex';
     
     const now = new Date();
     const expirationDate = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
@@ -70,10 +73,15 @@ function send(caption, photo){
     })
     .then(response => {
         console.log(response);
+        sendButton.style.display = 'flex';
+        waitSend.style.display = 'none';
+        sendButton.innerHTML = "<b>Вы учавствуете!</b>";
     })
     .catch(error => {
         console.error(error);
         waitResponse = false;
+        sendButton.style.display = 'flex';
+        waitSend.style.display = 'none';
     });
     // const formData = new FormData();
     // formData.append('photo', photo);
