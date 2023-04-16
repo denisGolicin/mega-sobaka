@@ -11,6 +11,12 @@ let waitResponse = false;
 const chatId = '-1001797140171';
 const token = '5256737385:AAHlQd83rrsgc5vwjL0k-6mDYfsz7J_ZD7I';
 
+if (document.cookie.indexOf('formSubmitted=1') !== -1) {
+    nameUser.value = getCookie('formUserName');
+    dogName.value = getCookie('formDogName');
+    phone.value = getCookie('formPhone');
+    info.value = getCookie('formInfo');
+}
 
 for(let i = 0; i < sendButton.length; i++){
     
@@ -81,6 +87,12 @@ function send(caption, photo, button){
         const expirationDate = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
     
         document.cookie = `formSubmitted=1; expires=${expirationDate.toUTCString()}; path=/`;
+
+        document.cookie = `formDogName=${dogName.value}; expires=${expirationDate.toUTCString()}; path=/`;
+        document.cookie = `formUserName=${nameUser.value}; expires=${expirationDate.toUTCString()}; path=/`;
+        document.cookie = `formPhone=${phone.value}; expires=${expirationDate.toUTCString()}; path=/`;
+        document.cookie = `formInfo=${info.value}; expires=${expirationDate.toUTCString()}; path=/`;
+
     })
     .catch(error => {
         console.error(error);
@@ -102,13 +114,14 @@ function isValidPhoneNumber(phoneNumber) {
     return regex.test(phoneNumber);
 }
 
-const cookies = document.cookie.split("; "); // Разделяем все куки на отдельные строки
-for (let i = 0; i < cookies.length; i++) {
-  const cookie = cookies[i].split("="); // Разделяем имя и значение куки
-  if (cookie[0] === "formSubmitted") {
-    const myCookieValue = cookie[1];
-    // Используем значение куки для чего-либо
-    console.log(myCookieValue)
-    break;
-  }
+function getCookie(name){
+    const cookies = document.cookie.split("; "); 
+    for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].split("="); 
+        if (cookie[0] === name) {
+            return cookie[1];
+        }
+    }
+
+    return 'null';
 }
