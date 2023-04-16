@@ -7,6 +7,7 @@ sendButton = document.querySelectorAll('.send');
 const photoButton = document.querySelector('#photo');
 const waitSend = document.querySelector('.waitSend');
 const infoTest = document.querySelector('.info-test');
+const imgCookie = document.querySelector('#blah');
 let waitResponse = false;
 
 const chatId = '-1001797140171';
@@ -19,6 +20,11 @@ if (document.cookie.indexOf('formSubmitted=1') !== -1) {
     info.value = getCookie('formInfo');
 
     infoTest.innerHTML = "Ваши данные на конкурс";
+
+    const savedImage = localStorage.getItem('savedImage');
+    if (savedImage) {
+        imgCookie.src = savedImage;
+    }
 }
 
 for(let i = 0; i < sendButton.length; i++){
@@ -59,6 +65,14 @@ for(let i = 0; i < sendButton.length; i++){
             invalidInput(photoButton);
             return;
         }
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = file.width;
+        canvas.height = file.height;
+        ctx.drawImage(file, 0, 0);
+        const base64Image = canvas.toDataURL();
+        localStorage.setItem('savedImage', base64Image);
     
         send(`Конкурент: ${nameUser.value}\nКличка собаки: ${dogName.value}\nНомер телефона: ${phone.value}\nДополнительная информация: ${info.value}`, 
         file, this);
