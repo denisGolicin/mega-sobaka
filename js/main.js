@@ -15,8 +15,8 @@ const chatId = '-1001797140171';
 const token = '5256737385:AAHlQd83rrsgc5vwjL0k-6mDYfsz7J_ZD7I';
 
 
-for(let i; i > sendButton.length; i++){
-
+for(let i = 0; i < sendButton.length; i++){
+    
     if (document.cookie.indexOf('formSubmitted=1') !== -1) {
         sendButton[i].innerHTML = "<b>Вы учавствуете!</b>";
     }
