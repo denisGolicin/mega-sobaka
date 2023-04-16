@@ -1,27 +1,82 @@
-const photo = document.querySelector('#blah').src;
-console.log(photo)
-const photoUrl = 'https://i.imgur.com/qHL4GJo.jpg';
-const caption = 'Hello, world!';
+// const photo = document.querySelector('#blah').src;
+// console.log(photo)
+
+const nameUser = document.querySelector('#name');
+const phone = document.querySelector('#phone');
+const dogName = document.querySelector('#dog');
+const info = document.querySelector('#info');
+const sendButton = document.querySelector('#send');
+const photoButton = document.querySelector('#photo');
+
 const chatId = '-1001797140171';
 const token = '5256737385:AAHlQd83rrsgc5vwjL0k-6mDYfsz7J_ZD7I';
 
-fetch(`https://api.telegram.org/bot${token}/sendPhoto`, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    chat_id: chatId,
-    photo: photo,
-    caption: caption
-  })
+sendButton.addEventListener('click', function(){
+    if(nameUser.value < 10){
+        invalidInput(nameUser);
+        return;
+    }
+    if(!isValidPhoneNumber(phone.value)){
+
+        invalidInput(phone);
+        return false;
+    }
+    if(dogName.value < 3){
+        invalidInput(dogName);
+        return;
+    }
+    if(info.value > 300){
+        invalidInput(info);
+        return;
+    }
+    let file = document.getElementById("file").files[0];
+
+    if (!file) {
+        invalidInput(photoButton);
+        return;
+    }
+
+    send(
+    `Конкурент: ${nameUser.value}\n
+    Кличка собаки: ${dogName.value}\n
+    Номер телефона: ${phone.value}\n
+    Дополнительная информация: ${info.value}
+    `, 
+    document.querySelector('#blah').src);
+
 })
-  .then(response => {
-    console.log(response);
-  })
-  .catch(error => {
-    console.error(error);
-  });
+
+function send(caption, photo){
+    fetch(`https://api.telegram.org/bot${token}/sendPhoto`, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        chat_id: chatId,
+        photo: photo,
+        caption: caption
+    })
+    })
+    .then(response => {
+        console.log(response);
+    })
+    .catch(error => {
+        console.error(error);
+    });
+}
+
+function invalidInput(e){
+    e.style.boxShadow = "0 0 5px red";
+    setTimeout(function(){
+      e.style.boxShadow = "0 0 0px red";
+    }, 1000)
+}
+
+function isValidPhoneNumber(phoneNumber) {
+    let regex = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
+    return regex.test(phoneNumber);
+}
 
 
 // let date = new Date();
