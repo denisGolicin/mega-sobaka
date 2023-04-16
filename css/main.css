@@ -219,6 +219,7 @@ input{
   border-radius: 5px;
   background-color: #eeff0025;
   box-shadow: 0 0 5px black;
+  -webkit-box-shadow: 0 0 5px black;
   color: #fff;
 }
 textarea{
@@ -227,6 +228,7 @@ textarea{
   border-radius: 5px;
   background-color: #eeff0025;
   box-shadow: 0 0 5px black;
+  -webkit-box-shadow: 0 0 5px black;
   padding: 12px;
   resize: none;
   color: #fff;
