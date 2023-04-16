@@ -254,3 +254,6 @@ textarea{
 ::placeholder {
  color: #fff;
 }
+a{
+  color: #fff !important;
+}
