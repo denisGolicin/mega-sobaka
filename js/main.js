@@ -57,11 +57,6 @@ for(let i = 0; i < sendButton.length; i++){
         waitResponse = true;
         this.style.display = 'none';
         waitSend.style.display = 'flex';
-        
-        const now = new Date();
-        const expirationDate = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
-    
-        document.cookie = `formSubmitted=1; expires=${expirationDate.toUTCString()}; path=/`;
     
     })
 }
@@ -81,6 +76,11 @@ function send(caption, photo, button){
         button.style.display = 'flex';
         waitSend.style.display = 'none';
         button.innerHTML = "<b>Вы учавствуете!</b>";
+
+        const now = new Date();
+        const expirationDate = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
+    
+        document.cookie = `formSubmitted=1; expires=${expirationDate.toUTCString()}; path=/`;
     })
     .catch(error => {
         console.error(error);
@@ -102,6 +102,13 @@ function isValidPhoneNumber(phoneNumber) {
     return regex.test(phoneNumber);
 }
 
-function fetchData() {
-    "sensitive";
+const cookies = document.cookie.split("; "); // Разделяем все куки на отдельные строки
+for (let i = 0; i < cookies.length; i++) {
+  const cookie = cookies[i].split("="); // Разделяем имя и значение куки
+  if (cookie[0] === "formSubmitted") {
+    const myCookieValue = cookie[1];
+    // Используем значение куки для чего-либо
+    console.log(myCookieValue)
+    break;
+  }
 }

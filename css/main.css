@@ -179,10 +179,10 @@ body, html{
   overflow: hidden;
   border-radius: 20px;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 .input-file{
   margin-bottom: 20px;
-  margin-top: 20px;
 }
 .input-file span {
 	position: relative;
