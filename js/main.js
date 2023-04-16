@@ -5,7 +5,8 @@ const nameUser = document.querySelector('#name');
 const phone = document.querySelector('#phone');
 const dogName = document.querySelector('#dog');
 const info = document.querySelector('#info');
-const sendButton = document.querySelector('#send');
+const sendButton = [];
+sendButton = document.querySelectorAll('.send');
 const photoButton = document.querySelector('#photo');
 const waitSend = document.querySelector('.waitSend');
 let waitResponse = false;
@@ -13,58 +14,62 @@ let waitResponse = false;
 const chatId = '-1001797140171';
 const token = '5256737385:AAHlQd83rrsgc5vwjL0k-6mDYfsz7J_ZD7I';
 
-if (document.cookie.indexOf('formSubmitted=1') !== -1) {
-    this.innerHTML = "<b>Вы учавствуете!</b>";
+
+for(let i; i > sendButton.length; i++){
+
+    if (document.cookie.indexOf('formSubmitted=1') !== -1) {
+        sendButton[i].innerHTML = "<b>Вы учавствуете!</b>";
+    }
+
+    sendButton[i].addEventListener('click', function(){
+        if (document.cookie.indexOf('formSubmitted=1') !== -1) {
+            return;
+        }
+        if(waitResponse){
+            return;
+        }
+    
+        if(nameUser.value < 10){
+            invalidInput(nameUser);
+            return;
+        }
+        if(!isValidPhoneNumber(phone.value)){
+    
+            invalidInput(phone);
+            return false;
+        }
+        if(dogName.value < 3){
+            invalidInput(dogName);
+            return;
+        }
+        if(info.value > 300){
+            invalidInput(info);
+            return;
+        }
+        let file = document.getElementById("file").files[0];
+        console.log(document.getElementById("file").files[0]);
+    
+        if (!file) {
+            invalidInput(photoButton);
+            return;
+        }
+    
+        send(`Конкурент: ${nameUser.value}\nКличка собаки: ${dogName.value}\nНомер телефона: ${phone.value}\nДополнительная информация: ${info.value}`, 
+        file, this);
+    
+        waitResponse = true;
+        this.style.display = 'none';
+        waitSend.style.display = 'flex';
+        
+        const now = new Date();
+        const expirationDate = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
+    
+        document.cookie = `formSubmitted=1; expires=${expirationDate.toUTCString()}; path=/`;
+    
+    })
 }
 
-sendButton.addEventListener('click', function(){
-    if (document.cookie.indexOf('formSubmitted=1') !== -1) {
-        return;
-    }
-    if(waitResponse){
-        return;
-    }
-
-    if(nameUser.value < 10){
-        invalidInput(nameUser);
-        return;
-    }
-    if(!isValidPhoneNumber(phone.value)){
-
-        invalidInput(phone);
-        return false;
-    }
-    if(dogName.value < 3){
-        invalidInput(dogName);
-        return;
-    }
-    if(info.value > 300){
-        invalidInput(info);
-        return;
-    }
-    let file = document.getElementById("file").files[0];
-    console.log(document.getElementById("file").files[0]);
-
-    if (!file) {
-        invalidInput(photoButton);
-        return;
-    }
-
-    send(`Конкурент: ${nameUser.value}\nКличка собаки: ${dogName.value}\nНомер телефона: ${phone.value}\nДополнительная информация: ${info.value}`, 
-    file);
-
-    waitResponse = true;
-    this.style.display = 'none';
-    waitSend.style.display = 'flex';
-    
-    const now = new Date();
-    const expirationDate = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
-
-    document.cookie = `formSubmitted=1; expires=${expirationDate.toUTCString()}; path=/`;
-
-})
-
-function send(caption, photo){
+function send(caption, photo, button){
     const formData = new FormData();
     formData.append('chat_id', chatId);
     formData.append('caption', caption);
@@ -76,14 +81,14 @@ function send(caption, photo){
     })
     .then(response => {
         console.log(response);
-        sendButton.style.display = 'flex';
+        button.style.display = 'flex';
         waitSend.style.display = 'none';
-        sendButton.innerHTML = "<b>Вы учавствуете!</b>";
+        button.innerHTML = "<b>Вы учавствуете!</b>";
     })
     .catch(error => {
         console.error(error);
         waitResponse = false;
-        sendButton.style.display = 'flex';
+        button.style.display = 'flex';
         waitSend.style.display = 'none';
     });
     // const formData = new FormData();
