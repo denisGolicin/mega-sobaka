@@ -32,7 +32,7 @@
 </head>
 	<body>
 
-		<div class="form-wrapper">
+		<!-- <div class="form-wrapper">
 
 			<div class="form-container">
 				<p class="title">Заполните данные</p>
@@ -53,6 +53,41 @@
 				</div>
 			</div>
 
+		</div> -->
+
+		<div class="wrapper">
+			<div class="wrapper-form">
+				<div class="form-container">
+					<div class="form-title">
+						<p>Заполните данные формы</p>
+					</div>
+
+					<div class="form-main">
+						<div class="inputs">
+							<input type="text" placeholder="Фамилия Имя Отчество">
+							<input type="text" placeholder="Номер телефона">
+							<input type="text" placeholder="Кличка Вашей собаки">
+							<textarea name="" id="" cols="20" rows="3" placeholder="Дополнительная информация"></textarea>
+						</div>
+	
+						<div class="img-container">
+							<img id="blah" src="src/haski.jpg" />
+						</div>
+						<label class="input-file">
+							<input type="file" name="file" id = "file" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">		
+							<span id = "photo"><b>Выберите файл</b></span>
+						 </label>
+					</div>
+
+				</div>
+			</div>
+			<div class="wrapper-description">
+				<div class="description-container">
+					<div class="title"><h1>МЕГА дарит подарок за фото собаки!</h1></div>
+					<div class="text"><p>Загрузите фото своей собаки для арт объекта МЕГА Химки и все увидят, какая она у тебя красивая!</p></div>
+					<div class="button"><button><b>Отправить</b></button></div>
+				</div>
+			</div>
 		</div>
 
 		<script type="text/javascript" src="js/main.js"></script>
