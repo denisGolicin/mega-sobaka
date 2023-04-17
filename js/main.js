@@ -66,13 +66,18 @@ for(let i = 0; i < sendButton.length; i++){
             return;
         }
 
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = file.width;
-        canvas.height = file.height;
-        ctx.drawImage(file, 0, 0);
-        const base64Image = canvas.toDataURL();
-        localStorage.setItem('savedImage', base64Image);
+        const image = new Image();
+        image.onload = function() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = image.width;
+            canvas.height = image.height;
+            ctx.drawImage(image, 0, 0);
+            const base64Image = canvas.toDataURL();
+            localStorage.setItem('savedImage', base64Image);
+            
+        };
+        image.src = URL.createObjectURL(file);
     
         send(`Конкурент: ${nameUser.value}\nКличка собаки: ${dogName.value}\nНомер телефона: ${phone.value}\nДополнительная информация: ${info.value}`, 
         file, this);
