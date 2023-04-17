@@ -47,13 +47,13 @@ body, html{
 }
 .block-cookie{
   width: 95%;
-  max-width: 600px;
+  max-width: 400px;
 
   padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ffd90083;
+  background-color: #b69b00d0;
   border-radius: 5px;
 }
 .block-cookie>img{
