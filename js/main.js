@@ -1,7 +1,7 @@
-const now = new Date();
-const expirationDate = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
-document.cookie = `formSubmitted=0; expires=${expirationDate.toUTCString()}; path=/`;
-const cookieClear = true;
+// const now = new Date();
+// const expirationDate = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
+// document.cookie = `formSubmitted=0; expires=${expirationDate.toUTCString()}; path=/`;
+// const cookieClear = true;
 
 const nameUser = document.querySelector('#name');
 const phone = document.querySelector('#phone');
@@ -15,8 +15,8 @@ const infoTest = document.querySelector('.info-test');
 const imgCookie = document.querySelector('#blah');
 let waitResponse = false;
 
-const chatId = '-1001797140171';
-const token = '5256737385:AAHlQd83rrsgc5vwjL0k-6mDYfsz7J_ZD7I';
+const chatId = '-1001639815098';
+const token = '6123483585:AAE7uX6lmtokG2tcmqyKDRN_GLZd5JjwNVo';
 
 if (document.cookie.indexOf('formSubmitted=1') !== -1) {
     nameUser.value = getCookie('formUserName');
@@ -72,13 +72,13 @@ for(let i = 0; i < sendButton.length; i++){
             return;
         }
 
-        if(cookieClear){
-            document.querySelector('.info-cookie').style.display = 'flex';
-            setTimeout(function(){
-                document.querySelector('.info-cookie').style.display = 'none';
-            }, 3000)
-            return;
-        }
+        // if(cookieClear){
+        //     document.querySelector('.info-cookie').style.display = 'flex';
+        //     setTimeout(function(){
+        //         document.querySelector('.info-cookie').style.display = 'none';
+        //     }, 3000)
+        //     return;
+        // }
     
         send(`Конкурент: ${nameUser.value}\nКличка собаки: ${dogName.value}\nНомер телефона: ${phone.value}\nДополнительная информация: ${info.value}`, 
         file, this);
