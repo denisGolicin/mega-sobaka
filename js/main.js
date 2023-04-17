@@ -20,6 +20,7 @@ if (document.cookie.indexOf('formSubmitted=1') !== -1) {
     info.value = getCookie('formInfo');
 
     infoTest.innerHTML = "Ваши данные на конкурс";
+    photoButton.style.display = 'none';
 
     const savedImage = localStorage.getItem('savedImage');
     if (savedImage) {
@@ -65,19 +66,6 @@ for(let i = 0; i < sendButton.length; i++){
             invalidInput(photoButton);
             return;
         }
-
-        const image = new Image();
-        image.onload = function() {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            canvas.width = image.width;
-            canvas.height = image.height;
-            ctx.drawImage(image, 0, 0);
-            const base64Image = canvas.toDataURL();
-            localStorage.setItem('savedImage', base64Image);
-            
-        };
-        image.src = URL.createObjectURL(file);
     
         send(`Конкурент: ${nameUser.value}\nКличка собаки: ${dogName.value}\nНомер телефона: ${phone.value}\nДополнительная информация: ${info.value}`, 
         file, this);
@@ -114,6 +102,22 @@ function send(caption, photo, button){
         document.cookie = `formUserName=${nameUser.value}; expires=${expirationDate.toUTCString()}; path=/`;
         document.cookie = `formPhone=${phone.value}; expires=${expirationDate.toUTCString()}; path=/`;
         document.cookie = `formInfo=${info.value}; expires=${expirationDate.toUTCString()}; path=/`;
+
+        const image = new Image();
+        image.onload = function() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = image.width;
+            canvas.height = image.height;
+            ctx.drawImage(image, 0, 0);
+            const base64Image = canvas.toDataURL();
+            localStorage.setItem('savedImage', base64Image);
+            
+        };
+        image.src = URL.createObjectURL(photo);
+
+        infoTest.innerHTML = "Ваши данные на конкурс";
+        photoButton.style.display = 'none';
 
     })
     .catch(error => {
