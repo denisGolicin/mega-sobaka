@@ -1,3 +1,8 @@
+const now = new Date();
+const expirationDate = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
+document.cookie = `formSubmitted=0; expires=${expirationDate.toUTCString()}; path=/`;
+const cookieClear = true;
+
 const nameUser = document.querySelector('#name');
 const phone = document.querySelector('#phone');
 const dogName = document.querySelector('#dog');
@@ -64,6 +69,14 @@ for(let i = 0; i < sendButton.length; i++){
     
         if (!file) {
             invalidInput(photoButton);
+            return;
+        }
+
+        if(cookieClear){
+            document.querySelector('.info-cookie').style.display = 'flex';
+            setTimeout(function(){
+                document.querySelector('.info-cookie').style.display = 'none';
+            }, 3000)
             return;
         }
     
