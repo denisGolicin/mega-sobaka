@@ -36,7 +36,7 @@ if (document.cookie.indexOf('formSubmitted=1') !== -1) {
 for(let i = 0; i < sendButton.length; i++){
     
     if (document.cookie.indexOf('formSubmitted=1') !== -1) {
-        sendButton[i].innerHTML = "<b>Вы учавствуете!</b>";
+        sendButton[i].innerHTML = "<b>Вы участвуете!</b>";
     }
 
     sendButton[i].addEventListener('click', function(){
