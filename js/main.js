@@ -80,7 +80,7 @@ for(let i = 0; i < sendButton.length; i++){
         //     return;
         // }
     
-        send(`Конкурент: ${nameUser.value}\nКличка собаки: ${dogName.value}\nНомер телефона: ${phone.value}\nДополнительная информация: ${info.value}`, 
+        send(`Конкурсант: ${nameUser.value}\nКличка собаки: ${dogName.value}\nНомер телефона: ${phone.value}\nДополнительная информация: ${info.value}`, 
         file, this);
     
         waitResponse = true;
